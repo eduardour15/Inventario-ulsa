@@ -10,7 +10,7 @@ void add_product(product *prod, int i)
     printf("Nombre del producto: ");
     fflush(stdin);
     scanf("%s", prod[i].name);
-    printf("\nCantidad de producto: ");
+    printf("\nVentas totales del producto: ");
     fflush(stdin);
     scanf("%d", prod[i]._amount);
     printf("\nPrecio de compra: ");
@@ -49,7 +49,7 @@ void update_prod(product *prod, int i)
     printf("Nombre: ");
     fflush(stdin);
     scanf("%s", &aux.name);
-    printf("\nCantidad de producto: ");
+    printf("\nVentas totales de producto: ");
     scanf("%d", &aux._amount);
     printf("\nPrecio de venta: ");
     scanf("%d", &aux._price_selled);
@@ -75,10 +75,35 @@ void delete_product(product *prod, int position, int i)
     if(!prod) error();
 }
 
+void delele_all(product *prod, int i){
+
+}
+
 void print_products(product *prod, int i){
     printf("\tTabala de productos\n");
     printf("\tDescripcion\tVentas\tPrecio de compra\tPrecio de venta\tGanancias\n");
     for(int j = 0; j <i;j++){
         printf("\t%d\t%d\t%d\t%d\t%d",prod[j].name,prod[j]._amount,prod[j]._price_selled,prod[j]._price_buyed,prod[j]._earned);
     }
+}
+
+int menu(){
+    int opc;
+    printf("\t---------MENU---------\n");
+    printf("\t1.Ingresar producto nuevo\n");
+    printf("\t2.Actualizar producto existente\n");
+    printf("\t3.Borrar producto\n");
+    printf("\t4.Borrar todos los productos\n");
+    printf("\t5.Mostrar los productos\n");
+    scanf("%d", &opc);
+    return opc;
+}
+
+void most_selled_item(product *prod, int i){
+    int may=0;
+    for (int j = 0; j < i; j++)
+    {
+        if()
+    }
+    
 }
