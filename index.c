@@ -1,8 +1,8 @@
-#include <stdio.h>
 #include "functions.h"
 
 int main(int argc, char const *argv[])
-{
-    /* code */
+{   
+    struct product *n;
+    testing();
     return 0;
 }
