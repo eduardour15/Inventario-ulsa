@@ -1,6 +1,7 @@
 #include "functions.h"
 
-void error(){
+void error()
+{
     perror("Error\n");
     exit(1);
 }
@@ -60,34 +61,42 @@ void update_prod(product *prod, int i)
 }
 void delete_product(product *prod, int position, int i)
 {
-    if(position>=i+1){
+    if (position >= i + 1)
+    {
         printf("No es posible eliminar el elemento");
-    }else{
-        for(int j=position-1;j<i-1;j++){
-            strcpy(prod[j].name,prod[j+1].name);
-            prod[j]._amount=prod[j+1]._amount;
-            prod[j]._price_selled=prod[j+1]._price_selled;
-            prod[j]._price_buyed=prod[j+1]._price_buyed;
-            prod[j]._earned=prod[j+1]._earned;
+    }
+    else
+    {
+        for (int j = position - 1; j < i - 1; j++)
+        {
+            strcpy(prod[j].name, prod[j + 1].name);
+            prod[j]._amount = prod[j + 1]._amount;
+            prod[j]._price_selled = prod[j + 1]._price_selled;
+            prod[j]._price_buyed = prod[j + 1]._price_buyed;
+            prod[j]._earned = prod[j + 1]._earned;
         }
     }
     prod = (product *)realloc((product *)prod, (i - 1) * sizeof(product));
-    if(!prod) error();
+    if (!prod)
+        error();
 }
 
-void delele_all(product *prod, int i){
-
+void delele_all(product *prod, int i)
+{
 }
 
-void print_products(product *prod, int i){
+void print_products(product *prod, int i)
+{
     printf("\tTabala de productos\n");
     printf("\tDescripcion\tVentas\tPrecio de compra\tPrecio de venta\tGanancias\n");
-    for(int j = 0; j <i;j++){
-        printf("\t%d\t%d\t%d\t%d\t%d",prod[j].name,prod[j]._amount,prod[j]._price_selled,prod[j]._price_buyed,prod[j]._earned);
+    for (int j = 0; j < i; j++)
+    {
+        printf("\t%d\t%d\t%d\t%d\t%d", prod[j].name, prod[j]._amount, prod[j]._price_selled, prod[j]._price_buyed, prod[j]._earned);
     }
 }
 
-int menu(){
+int menu()
+{
     int opc;
     printf("\t---------MENU---------\n");
     printf("\t1.Ingresar producto nuevo\n");
@@ -95,15 +104,17 @@ int menu(){
     printf("\t3.Borrar producto\n");
     printf("\t4.Borrar todos los productos\n");
     printf("\t5.Mostrar los productos\n");
+    printf("\t6.Salir\n");
     scanf("%d", &opc);
     return opc;
 }
 
-void most_selled_item(product *prod, int i){
-    int may=0;
+void most_selled_item(product *prod, int i)
+{
+    int may = 0;
     for (int j = 0; j < i; j++)
     {
-        if()
+        if (prod[j]._amount > may)
+            may = prod[j]._amount;
     }
-    
 }
