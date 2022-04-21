@@ -6,9 +6,10 @@ int main(int argc, char const *argv[])
 {   
    printf("Bienvenido ");
    printf("%s\n\n\n\n\n", nomb);
-    j = 0;
+    int j = 0;
+    int obj;
     product *f;
-    f = malloc(sizeof(product));
+    f = (product*)malloc(sizeof(product));
     if (f == NULL){
         error();
     }
@@ -18,25 +19,30 @@ int main(int argc, char const *argv[])
         i = menu();
         switch(i){
             case 1: 
-                add_product(*f,j); 
+                add_product(f,j); 
                 j++;
-                j = (product *)realloc((product *)j, (i + 1) * sizeof(product));
-                if (j == NULL){
+                f = (product *)realloc((product *)f, (j + 1) * sizeof(product));
+                if (f == NULL){
                     error();
                 }
                 break;
             case 2: 
-                update_prod(*f,j);
+                update_product(f,j);
+                break;
             case 3: 
-                int obj = 0;
-                obj = find_product();
-                if(obj == NULL){
+                obj = 0;
+                obj = find_product(f,j);
+                if(obj == -1){
                     printf("Producto no encontrado");
                 };
-                delete_product(*f,obj,j);
+                delete_product(f,obj,j);
+                break;
             case 4:
-                delete_product(*f,j);
+                delete_all(f,j);
+                break;
             case 5:
+                break;
+                
             
         }
     }
