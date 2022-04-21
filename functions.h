@@ -19,5 +19,6 @@ void add_product(product *prod, int i);
 int find_product(product *prod, int i);
 void update_product(product *prod, int i);
 void delete_product(product *prod, int position, int i);
+void print_products(product *prod, int i);
 
 #endif

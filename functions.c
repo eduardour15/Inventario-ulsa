@@ -74,3 +74,11 @@ void delete_product(product *prod, int position, int i)
     prod = (product *)realloc((product *)prod, (i - 1) * sizeof(product));
     if(!prod) error();
 }
+
+void print_products(product *prod, int i){
+    printf("\tTabala de productos\n");
+    printf("\tDescripcion\tVentas\tPrecio de compra\tPrecio de venta\tGanancias\n");
+    for(int j = 0; j <i;j++){
+        printf("\t%d\t%d\t%d\t%d\t%d",prod[j].name,prod[j]._amount,prod[j]._price_selled,prod[j]._price_buyed,prod[j]._earned);
+    }
+}
