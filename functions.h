@@ -14,6 +14,7 @@ typedef struct
     int _earned;
 } product;
 
+void error();
 void add_product(product *prod, int i);
 int find_product(product *prod, int i);
 void update_product(product *prod, int i);

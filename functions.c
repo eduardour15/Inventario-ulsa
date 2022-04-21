@@ -1,5 +1,10 @@
 #include "functions.h"
 
+void error(){
+    perror("Error\n");
+    exit(1);
+}
+
 void add_product(product *prod, int i)
 {
     printf("Nombre del producto: ");
@@ -66,5 +71,6 @@ void delete_product(product *prod, int position, int i)
             prod[j]._earned=prod[j+1]._earned;
         }
     }
-    
+    prod = (product *)realloc((product *)prod, (i - 1) * sizeof(product));
+    if(!prod) error();
 }
