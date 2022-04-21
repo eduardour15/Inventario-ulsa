@@ -17,8 +17,27 @@ int main(int argc, char const *argv[])
         fflush(stdin);
         i = menu();
         switch(i){
-            case 1: add_product(*f,); 
-                    break;
+            case 1: 
+                add_product(*f,j); 
+                j++;
+                j = (product *)realloc((product *)j, (i + 1) * sizeof(product));
+                if (j == NULL){
+                    error();
+                }
+                break;
+            case 2: 
+                update_prod(*f,j);
+            case 3: 
+                int obj = 0;
+                obj = find_product();
+                if(obj == NULL){
+                    printf("Producto no encontrado");
+                };
+                delete_product(*f,obj,j);
+            case 4:
+                delete_product(*f,j);
+            case 5:
+            
         }
     }
 
