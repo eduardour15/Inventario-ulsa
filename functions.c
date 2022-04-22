@@ -33,7 +33,6 @@ int find_product(product *prod, int i)
     scanf("%s", aux);
     for (int j = 0; j <= i; j++)
     {
-        printf("\n\t%s\n",prod[j].name);
         if (strcmp(prod[j].name, aux) == 0)
         {
             return j;
@@ -44,53 +43,29 @@ int find_product(product *prod, int i)
 void update_product(product *prod, int i)
 {
     product aux;
-    int auxPosition = 0;
-    printf("\n\n\t\tposition: %d  i: %d\n\n",auxPosition,i);
-    auxPosition = find_product(prod, i);
-    printf("\n\n\t\tposition: %d  i: %d\n\n",auxPosition,i);
-    if (auxPosition == -1)
-    {
-        printf("El producto no fue encontrado (Verifica que las mayusculas esten correctas)\n");
-        return;
-    }
-    else
-    {
-        printf("\nACTUALIZANDO PRODUCTOS\n");
-
-        printf("Nombre del producto: ");
-        fflush(stdin);
-        scanf("%s", aux.name);
-        printf("\nVentas totales del producto: ");
-        fflush(stdin);
-        scanf("%d", &aux._amount);
-        printf("\nPrecio de compra: ");
-        fflush(stdin);
-        scanf("%d", &aux._price_buyed);
-        printf("\nPrecio de venta: ");
-        fflush(stdin);
-        scanf("%d", &aux._price_selled);
-        aux._earned = aux._amount * (aux._price_selled - aux._price_buyed);
-        strcpy(prod[auxPosition].name, aux.name);
-        prod[auxPosition]._amount = aux._amount;
-        prod[auxPosition]._price_selled = aux._price_selled;
-        prod[auxPosition]._price_buyed = aux._price_buyed;
-        prod[auxPosition]._earned = aux._earned;
-    }
+    printf("\nACTUALIZANDO PRODUCTOS\n");
+    printf("Nombre del producto: ");
+    fflush(stdin);
+    scanf("%s", aux.name);
+    printf("\nVentas totales del producto: ");
+    fflush(stdin);
+    scanf("%d", &aux._amount);
+    printf("\nPrecio de compra: ");
+    fflush(stdin);
+    scanf("%d", &aux._price_buyed);
+    printf("\nPrecio de venta: ");
+    fflush(stdin);
+    scanf("%d", &aux._price_selled);
+    aux._earned = aux._amount * (aux._price_selled - aux._price_buyed);
+    strcpy(prod[i].name, aux.name);
+    prod[i]._amount = aux._amount;
+    prod[i]._price_selled = aux._price_selled;
+    prod[i]._price_buyed = aux._price_buyed;
+    prod[i]._earned = aux._earned;
 }
-int delete_product(product *prod, int i)
+void delete_product(product *prod,  int position, int i)
 {
-    int position = 0;
-    printf("\n\n\t\tposition: %d  i: %d\n\n",position,i);
-    position = find_product(prod, i);
-    printf("\n\n\t\tposition: %d  i: %d\n\n",position,i);
-    if (position == -1)
-    {
-        printf("El producto no fue encontrado (Verifica que las mayusculas esten correctas)\n");
-        return -1;
-    }
-    else
-    {
-        for (int j = position - 1; j <= i ; j++)
+        for (int j = position - 1; j < i-1; j++)
         {
             strcpy(prod[j].name, prod[j + 1].name);
             prod[j]._amount = prod[j + 1]._amount;
@@ -98,9 +73,6 @@ int delete_product(product *prod, int i)
             prod[j]._price_buyed = prod[j + 1]._price_buyed;
             prod[j]._earned = prod[j + 1]._earned;
         }
-        return 1;
-
-    }
 }
 
 void delete_all(product *prod, int i)
@@ -116,7 +88,7 @@ void print_products(product *prod, int i)
     printf("\tDescripcion\t Ventas\t Precio de compra\t Precio de venta\t Ganancias\n");
     for (int j = 0; j < i; j++)
     {
-        printf("\t%s\t%d\t%d\t%d\t%d\n", prod[j].name, prod[j]._amount, prod[j]._price_selled, prod[j]._price_buyed, prod[j]._earned);
+        printf("\t%s\t%d\t%d\t%d\t%d\n", prod[j].name, prod[j]._amount, prod[j]._price_buyed, prod[j]._price_selled, prod[j]._earned);
     }
 }
 
