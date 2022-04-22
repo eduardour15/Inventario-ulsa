@@ -28,7 +28,7 @@ int find_product(product *prod, int i)
     int pos = 0;
     char aux[256];
     print_products(prod, i);
-    printf("Escriba el nombre del producto a actualizar: ");
+    printf("Escriba el nombre del producto a buscar: ");
     fflush(stdin);
     scanf("%s", aux);
     for (int j = 0; j <= i; j++)
@@ -65,7 +65,7 @@ void update_product(product *prod, int i)
 }
 void delete_product(product *prod,  int position, int i)
 {
-        for (int j = position - 1; j < i-1; j++)
+        for (int j = position ; j < i-1; j++)
         {
             strcpy(prod[j].name, prod[j + 1].name);
             prod[j]._amount = prod[j + 1]._amount;

@@ -50,7 +50,7 @@ int main(int argc, char const *argv[])
             {
                 delete_product(almc, aux_contador, contador);
                 contador--;
-                almc = (product *)realloc(almc, contador * (sizeof(product)));
+                almc = realloc(almc, contador * (sizeof(product)));
                 if (almc == NULL)
                     error();
             }
