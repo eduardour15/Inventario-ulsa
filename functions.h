@@ -18,9 +18,10 @@ void error();
 void add_product(product *prod, int i);
 int find_product(product *prod, int i);
 void update_product(product *prod, int i);
-void delete_product(product *prod,  int i);
+int delete_product(product *prod,  int i);
 void print_products(product *prod, int i);
 int menu();
 void delete_all(product *prod, int i);
 void most_selled_item(product *prod, int i);
+void profits(product *pro, int i);
 #endif
