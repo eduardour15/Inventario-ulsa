@@ -20,9 +20,7 @@ void add_product(product *prod, int i)
     printf("\nPrecio de venta: ");
     fflush(stdin);
     scanf("%d", &prod[i]._price_selled);
-    printf("\nGanancias de producto: ");
-    fflush(stdin);
-    scanf("%d", &prod[i]._earned);
+    prod[i]._earned = prod[i]._amount * (prod[i]._price_selled - prod[i]._price_buyed);
 }
 
 int find_product(product *prod, int i)
@@ -30,10 +28,10 @@ int find_product(product *prod, int i)
     int pos = 0;
     char aux[256];
     print_products(prod, i);
-    printf("Escriba el nombre del producot a actualizar");
+    printf("Escriba el nombre del producto a actualizar: ");
     fflush(stdin);
     scanf("%s", aux);
-    for (int j = 0; i < i; j++)
+    for (int j = 0; i <= i; j++)
     {
         if (strcmp(prod[j].name, aux) == 0)
         {
@@ -55,7 +53,7 @@ void update_product(product *prod, int i)
     else
     {
         printf("\nACTUALIZANDO PRODUCTOS\n");
-        printf("================================");
+
         printf("Nombre: ");
         fflush(stdin);
         scanf("%s", aux.name);
@@ -74,15 +72,18 @@ void update_product(product *prod, int i)
         prod[auxPosition]._earned = aux._earned;
     }
 }
-void delete_product(product *prod, int position, int i)
+void delete_product(product *prod, int i)
 {
-    if (position >= i + 1)
+    int position = 0;
+    position = find_product(prod, i);
+    if (position == -1)
     {
-        printf("No es posible eliminar el elemento");
+        printf("El producto no fue encontrado (Verifica que las mayusculas esten correctas)\n");
+        return;
     }
     else
     {
-        for (int j = position - 1; j < i - 1; j++)
+        for (int j = position - 1; j <= i - 1; j++)
         {
             strcpy(prod[j].name, prod[j + 1].name);
             prod[j]._amount = prod[j + 1]._amount;
@@ -91,9 +92,6 @@ void delete_product(product *prod, int position, int i)
             prod[j]._earned = prod[j + 1]._earned;
         }
     }
-    prod = (product *)realloc((product *)prod, (i - 1) * sizeof(product));
-    if (!prod)
-        error();
 }
 
 void delete_all(product *prod, int i)
@@ -103,10 +101,10 @@ void delete_all(product *prod, int i)
 void print_products(product *prod, int i)
 {
     printf("\tTabala de productos\n");
-    printf("\tDescripcion\tVentas\tPrecio de compra\tPrecio de venta\tGanancias\n");
+    printf("\tDescripcion\t Ventas\t Precio de compra\t Precio de venta\t Ganancias\n");
     for (int j = 0; j < i; j++)
     {
-        printf("\t%s\t%d\t%d\t%d\t%d", prod[j].name, prod[j]._amount, prod[j]._price_selled, prod[j]._price_buyed, prod[j]._earned);
+        printf("\t%s\t%d\t%d\t%d\t%d\n", prod[j].name, prod[j]._amount, prod[j]._price_selled, prod[j]._price_buyed, prod[j]._earned);
     }
 }
 
@@ -119,7 +117,7 @@ int menu()
     printf("\t3.Borrar producto\n");
     printf("\t4.Borrar todos los productos\n");
     printf("\t5.Mostrar los productos\n");
-    printf("\t6.Salir\n");
+    printf("\t6.Salir\n\t");
     scanf("%d", &opc);
     return opc;
 }
